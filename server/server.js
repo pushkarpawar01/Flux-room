@@ -1,13 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
-const cors = require("cors");
-const path = require("path");
+import 'dotenv/config.js';
+import express from "express";
+import http from "http";
+import { Server } from "socket.io";
+import cors from "cors";
+import path from "path";
 
-const connectDB = require("./config/db");
-const roomRoutes = require("./routes/roomRoutes");
-const { registerSocketHandlers } = require("./sockets/roomSocket");
+import connectDB from "./config/db.js";
+import roomRoutes from "./routes/roomRoutes.js";
+import { registerSocketHandlers } from "./sockets/roomSocket.js";
 
 // ─── App Setup ───────────────────────────────────────────────────────────────
 
@@ -81,11 +81,14 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Only start the server if not being required as a module (e.g. by Vercel)
-if (require.main === module) {
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+if (process.argv[1] === __filename) {
   httpServer.listen(PORT, () => {
     console.log(`🚀 FluxRoom server running on port ${PORT}`);
   });
 }
 
 // Export for Vercel
-module.exports = app;
+export default app;

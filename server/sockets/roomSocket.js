@@ -1,5 +1,5 @@
-const Message = require("../models/Message");
-const Room = require("../models/Room");
+import Message from "../models/Message.js";
+import Room from "../models/Room.js";
 
 // In-memory map of roomCode -> Set of socket IDs (for user count tracking)
 const roomUsers = new Map();
@@ -172,4 +172,4 @@ const _broadcastUserCount = (io, roomCode) => {
   io.to(roomCode).emit("user_count", { count });
 };
 
-module.exports = { registerSocketHandlers };
+export { registerSocketHandlers };

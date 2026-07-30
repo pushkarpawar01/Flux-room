@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const MessageSchema = new mongoose.Schema({
   roomCode: {
@@ -41,4 +41,4 @@ const MessageSchema = new mongoose.Schema({
 // TTL index: auto-delete messages 24 hours after createdAt
 MessageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 86400 });
 
-module.exports = mongoose.model("Message", MessageSchema);
+export default mongoose.model("Message", MessageSchema);

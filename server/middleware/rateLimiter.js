@@ -1,4 +1,4 @@
-const rateLimit = require("express-rate-limit");
+import rateLimit from "express-rate-limit";
 
 /**
  * General API rate limiter — prevents brute-force on room creation/validation.
@@ -22,4 +22,4 @@ const createRoomLimiter = rateLimit({
   message: { error: "Too many room creation requests. Try again in a minute." },
 });
 
-module.exports = { apiLimiter, createRoomLimiter };
+export { apiLimiter, createRoomLimiter };

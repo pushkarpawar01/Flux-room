@@ -1,6 +1,6 @@
-const Room = require("../models/Room");
-const Message = require("../models/Message");
-const { generateRoomCode } = require("../utils/roomCodeGenerator");
+import Room from "../models/Room.js";
+import Message from "../models/Message.js";
+import { generateRoomCode } from "../utils/roomCodeGenerator.js";
 
 const MAX_COLLISION_RETRIES = 5;
 
@@ -100,4 +100,4 @@ const fetchMessages = async (req, res) => {
   }
 };
 
-module.exports = { createRoom, validateRoom, fetchMessages };
+export { createRoom, validateRoom, fetchMessages };

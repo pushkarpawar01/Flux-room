@@ -1,18 +1,18 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {
+import {
     createRoom,
     validateRoom,
     fetchMessages,
-} = require("../controllers/roomController");
-const {
+} from "../controllers/roomController.js";
+import {
     uploadFile,
     uploadSingle,
-} = require("../controllers/uploadController");
-const {
+} from "../controllers/uploadController.js";
+import {
     apiLimiter,
     createRoomLimiter,
-} = require("../middleware/rateLimiter");
+} from "../middleware/rateLimiter.js";
 
 // POST /api/rooms — create a new room
 router.post("/", createRoomLimiter, createRoom);
@@ -26,4 +26,4 @@ router.get("/:code", apiLimiter, validateRoom);
 // GET /api/rooms/:code/messages — fetch message history
 router.get("/:code/messages", apiLimiter, fetchMessages);
 
-module.exports = router;
+export default router;

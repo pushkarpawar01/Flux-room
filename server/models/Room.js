@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const RoomSchema = new mongoose.Schema({
   roomCode: {
@@ -18,4 +18,4 @@ const RoomSchema = new mongoose.Schema({
 // TTL index: auto-delete room documents 24 hours after createdAt
 RoomSchema.index({ createdAt: 1 }, { expireAfterSeconds: 86400 });
 
-module.exports = mongoose.model("Room", RoomSchema);
+export default mongoose.model("Room", RoomSchema);

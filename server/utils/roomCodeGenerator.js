@@ -1,4 +1,4 @@
-const crypto = require("crypto");
+import crypto from "crypto";
 
 /**
  * Generates a cryptographically random 6-character alphanumeric room code.
@@ -15,4 +15,4 @@ const generateRoomCode = () => {
   return code;
 };
 
-module.exports = { generateRoomCode };
+export { generateRoomCode };
